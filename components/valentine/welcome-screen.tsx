@@ -1,17 +1,17 @@
 "use client"
 
-import { useEffect, useState } from "react"
-import { Heart, Gift } from "lucide-react"
+import { useEffect, useState, useCallback } from "react"
+import { Heart, Sparkles } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 interface FloatingHeartProps {
   delay: number
   left: string
-  top: string
   size: number
+  duration?: number
 }
 
-function FloatingHeart({ delay, left, top, size }: FloatingHeartProps) {
+function FloatingHeart({ delay, left, size, duration = 6 }: FloatingHeartProps) {
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
@@ -23,11 +23,37 @@ function FloatingHeart({ delay, left, top, size }: FloatingHeartProps) {
 
   return (
     <div
-      className="absolute animate-float text-primary/60"
-      style={{ left, top }}
+      className="absolute bottom-0 animate-float-up pointer-events-none"
+      style={{ 
+        left, 
+        animationDuration: `${duration}s`,
+        animationDelay: `${delay}ms`
+      }}
     >
-      <Heart size={size} fill="currentColor" />
+      <Heart 
+        size={size} 
+        className="text-rose-300/70" 
+        fill="currentColor" 
+      />
     </div>
+  )
+}
+
+function Particle({ delay, left }: { delay: number; left: string }) {
+  const [visible, setVisible] = useState(false)
+
+  useEffect(() => {
+    const timer = setTimeout(() => setVisible(true), delay)
+    return () => clearTimeout(timer)
+  }, [delay])
+
+  if (!visible) return null
+
+  return (
+    <div
+      className="absolute w-1 h-1 rounded-full bg-rose-300/60 animate-twinkle"
+      style={{ left, top: `${Math.random() * 60 + 10}%`, animationDelay: `${delay}ms` }}
+    />
   )
 }
 
@@ -37,65 +63,106 @@ interface WelcomeScreenProps {
 
 export function WelcomeScreen({ onContinue }: WelcomeScreenProps) {
   const [mounted, setMounted] = useState(false)
+  const [hearts, setHearts] = useState<Array<{ id: number; left: string; size: number; duration: number }>>([])
 
   useEffect(() => {
     setMounted(true)
+    
+    // Generate continuous floating hearts
+    const generateHeart = () => {
+      const newHeart = {
+        id: Date.now() + Math.random(),
+        left: `${Math.random() * 90 + 5}%`,
+        size: Math.random() * 12 + 10,
+        duration: Math.random() * 4 + 5,
+      }
+      setHearts(prev => [...prev.slice(-15), newHeart])
+    }
+
+    const interval = setInterval(generateHeart, 800)
+    return () => clearInterval(interval)
   }, [])
 
   return (
-    <div className="relative min-h-screen flex flex-col items-center justify-between px-6 py-12 bg-gradient-to-b from-rose-50 via-pink-50 to-background">
-      {/* Floating Hearts Background */}
-      <FloatingHeart delay={0} left="10%" top="15%" size={16} />
-      <FloatingHeart delay={400} left="85%" top="12%" size={14} />
-      <FloatingHeart delay={800} left="20%" top="70%" size={12} />
-      <FloatingHeart delay={1200} left="80%" top="65%" size={18} />
-      <FloatingHeart delay={600} left="50%" top="8%" size={10} />
-      <FloatingHeart delay={1000} left="15%" top="45%" size={14} />
-      <FloatingHeart delay={1400} left="88%" top="40%" size={12} />
+    <div className="relative min-h-screen flex flex-col items-center justify-center px-6 py-12 bg-gradient-to-b from-rose-100 via-pink-50 to-rose-50 overflow-hidden">
+      {/* Ambient particles */}
+      {Array.from({ length: 20 }).map((_, i) => (
+        <Particle key={i} delay={i * 200} left={`${Math.random() * 100}%`} />
+      ))}
+
+      {/* Floating Hearts */}
+      {hearts.map((heart) => (
+        <FloatingHeart
+          key={heart.id}
+          delay={0}
+          left={heart.left}
+          size={heart.size}
+          duration={heart.duration}
+        />
+      ))}
+
+      {/* Soft radial glow behind content */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div className="w-[600px] h-[600px] bg-rose-200/30 rounded-full blur-3xl" />
+      </div>
 
       {/* Main Content */}
-      <div className="flex-1 flex flex-col items-center justify-center">
-        {/* Gift Icon with Glow */}
+      <div className="relative z-10 flex flex-col items-center">
+        {/* Animated Heart with Glow */}
         <div
           className={cn(
-            "relative mb-12 transition-all duration-1000",
-            mounted ? "opacity-100 scale-100" : "opacity-0 scale-90"
+            "relative mb-10 transition-all duration-1000",
+            mounted ? "opacity-100 scale-100" : "opacity-0 scale-75"
           )}
         >
-          <div className="absolute inset-0 bg-primary/20 rounded-full blur-3xl animate-pulse-glow" />
-          <div className="relative w-40 h-40 flex items-center justify-center">
-            <Gift className="w-24 h-24 text-primary" strokeWidth={1.5} />
+          <div className="absolute inset-0 bg-rose-400/30 rounded-full blur-3xl scale-150 animate-pulse-glow" />
+          <div className="relative animate-heartbeat">
+            <Heart 
+              className="w-28 h-28 md:w-36 md:h-36 text-rose-400 drop-shadow-lg" 
+              fill="currentColor"
+              strokeWidth={0}
+            />
+            <Sparkles className="absolute top-0 right-0 w-6 h-6 text-amber-400 animate-sparkle" />
+            <Sparkles className="absolute bottom-2 left-0 w-5 h-5 text-amber-400 animate-sparkle" style={{ animationDelay: '0.5s' }} />
           </div>
         </div>
 
-        {/* Title with decorative elements */}
+        {/* Title with elegant styling */}
         <div
           className={cn(
-            "flex items-center gap-4 mb-6 transition-all duration-700 delay-300",
-            mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            "flex flex-col items-center mb-8 transition-all duration-700 delay-300",
+            mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           )}
         >
-          <div className="w-10 h-px bg-primary/40" />
-          <h1 className="font-serif text-4xl md:text-5xl text-foreground">For Sara</h1>
-          <div className="w-10 h-px bg-primary/40" />
+          <p className="text-rose-400/80 text-sm tracking-[0.3em] uppercase mb-3 font-medium">
+            A Special Gift
+          </p>
+          <div className="flex items-center gap-4 mb-4">
+            <div className="w-12 h-px bg-gradient-to-r from-transparent to-rose-300" />
+            <Heart className="w-3 h-3 text-rose-400" fill="currentColor" />
+            <div className="w-12 h-px bg-gradient-to-l from-transparent to-rose-300" />
+          </div>
+          <h1 className="font-serif text-5xl md:text-6xl text-rose-900 tracking-tight">
+            For Sara
+          </h1>
         </div>
 
-        {/* Subtitle with hearts */}
+        {/* Romantic subtitle */}
         <div
           className={cn(
             "flex flex-col items-center transition-all duration-700 delay-500",
             mounted ? "opacity-100" : "opacity-0"
           )}
         >
-          <div className="flex items-center gap-1 mb-4">
-            <Heart className="w-2.5 h-2.5 text-primary" fill="currentColor" />
-            <Heart className="w-3.5 h-3.5 text-primary mx-1" fill="currentColor" />
-            <Heart className="w-4.5 h-4.5 text-primary mx-1" fill="currentColor" />
-            <Heart className="w-3.5 h-3.5 text-primary mx-1" fill="currentColor" />
-            <Heart className="w-2.5 h-2.5 text-primary" fill="currentColor" />
+          <div className="flex items-center gap-1.5 mb-4">
+            <Heart className="w-2 h-2 text-rose-300" fill="currentColor" />
+            <Heart className="w-3 h-3 text-rose-400" fill="currentColor" />
+            <Heart className="w-4 h-4 text-rose-400" fill="currentColor" />
+            <Heart className="w-3 h-3 text-rose-400" fill="currentColor" />
+            <Heart className="w-2 h-2 text-rose-300" fill="currentColor" />
           </div>
-          <p className="text-muted-foreground text-sm tracking-wide">
-            A Valentine&apos;s surprise awaits
+          <p className="text-rose-600/70 text-base md:text-lg italic font-serif">
+            Something made with love, just for you
           </p>
         </div>
       </div>
@@ -103,21 +170,22 @@ export function WelcomeScreen({ onContinue }: WelcomeScreenProps) {
       {/* Continue Button */}
       <div
         className={cn(
-          "transition-all duration-700 delay-700",
+          "absolute bottom-12 transition-all duration-700 delay-700",
           mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
         )}
       >
-        <div className="relative">
-          <div className="absolute inset-0 bg-primary/30 rounded-full blur-lg animate-pulse-glow" />
-          <button
-            onClick={onContinue}
-            className="relative flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-pink-300 via-pink-400 to-pink-500 text-white font-semibold rounded-full shadow-lg shadow-pink-400/40 hover:shadow-xl hover:shadow-pink-400/50 hover:scale-105 active:scale-95 transition-all duration-200"
-          >
-            <span className="text-lg">Open Your Gifts</span>
-            <Heart className="w-5 h-5" fill="currentColor" />
-          </button>
-        </div>
+        <button
+          onClick={onContinue}
+          className="group relative flex items-center gap-3 px-10 py-4 bg-gradient-to-r from-rose-400 via-rose-500 to-pink-500 text-white font-semibold rounded-full shadow-xl shadow-rose-400/40 hover:shadow-2xl hover:shadow-rose-500/50 hover:scale-105 active:scale-95 transition-all duration-300"
+        >
+          <div className="absolute inset-0 bg-white/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+          <span className="relative text-lg tracking-wide">Open Your Gifts</span>
+          <Heart className="relative w-5 h-5 group-hover:scale-110 transition-transform" fill="currentColor" />
+        </button>
       </div>
+
+      {/* Bottom decoration */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-rose-100/50 to-transparent pointer-events-none" />
     </div>
   )
 }

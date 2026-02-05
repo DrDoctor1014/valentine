@@ -14,8 +14,12 @@ const lato = Lato({
 })
 
 export const metadata: Metadata = {
-  title: "Valentine's Day | For Sara",
-  description: "A special Valentine's surprise awaits you",
+  title: "For Sara | Happy Valentine's Day 2026",
+  description: "A special Valentine's surprise made with love, just for you.",
+  openGraph: {
+    title: "Happy Valentine's Day, Sara!",
+    description: "A special surprise awaits...",
+  },
 }
 
 export const viewport: Viewport = {
