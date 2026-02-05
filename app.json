@@ -1,0 +1,44 @@
+{
+  "expo": {
+    "name": "Valentine Surprise",
+    "slug": "valentine-surprise",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "valentine-surprise",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.brady.valentinesurprise"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#FFB6C1",
+        "foregroundImage": "./assets/images/icon.png"
+      },
+      "package": "com.brady.valentinesurprise",
+      "edgeToEdgeEnabled": true,
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "output": "single",
+      "favicon": "./assets/images/icon.png"
+    },
+    "plugins": [
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/images/splash-icon.png",
+          "imageWidth": 200,
+          "resizeMode": "contain",
+          "backgroundColor": "#FFF5F7"
+        }
+      ],
+      "expo-web-browser"
+    ],
+    "experiments": {
+      "reactCompiler": true
+    }
+  }
+}

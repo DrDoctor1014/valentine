@@ -1,0 +1,57 @@
+Project: “Brady’s Valentine Surprise” — A Romantic Mobile App Experience
+
+Create a beautifully animated, emotionally warm Valentine’s Day mobile app for Brady to surprise his girlfriend Sara on their first Valentine’s together. The entire experience should feel like opening real gifts in a soft, dreamy, romantic world — full of flowers, hearts, gentle motion, and meaningful moments.
+
+Overall Experience  
+When Sara opens the app, she is welcomed into a pink, floral, cozy world. The tone is intimate, magical, and personal — like a private little ceremony just for the two of them. Everything should feel smooth, elegant, and intentionally slow. No harsh movements, no loud visuals — just warmth, love, and surprise.
+
+Main Screen  
+The first screen shows three beautifully wrapped gift boxes arranged in a single straight horizontal line. They look identical, but their left-to-right positions are visually shuffled each time the app loads so it feels playful and unpredictable. Sara is told she can tap any gift she wants.
+
+Even though the order looks random, the emotional flow is carefully paced behind the scenes:  
+1) The first gift revealed is always the digital love note  
+2) The second gift revealed is always the $50 Amazon gift card  
+3) The third gift revealed is always the music video Brady made  
+
+This creates the illusion of choice while guiding her through a perfect emotional journey.
+
+Gift One – The Love Note  
+When the first gift is tapped, the box softly opens with a gentle animation. Hearts or petals float up, a quiet chime plays, and a beautiful digital card appears. The card displays Brady’s personal message to Sara in elegant text, with subtle animated flourishes like drifting petals or glowing edges. The message feels handwritten and intimate. At the bottom it signs automatically with “Love, Brady.”
+
+This screen should feel calm and emotional — something she’ll want to reread.
+
+Gift Two – The Gift Card  
+When the second gift opens, it feels exciting and celebratory. The box unwraps with sparkle and shimmer. Inside is a beautiful gift card-style screen that hides the Amazon code until Sara taps a “Reveal” button. When the code appears, confetti or glowing hearts burst softly. A “Copy Code” button lets her easily save it, and a little message reads:  
+“For little treats and big smiles — Love, Brady.”
+
+Gift Three – The Music Video  
+The third gift opens with a dramatic, romantic reveal. The box unwraps to show a video player with Brady’s music video. It starts silently with a preview, and when she taps play the sound comes on. The player feels cinematic and special, with soft lighting and gentle animation around the edges. A caption below reads:  
+“A little song for you. — Love, Brady”
+
+Final Moment – The Digital Flowers  
+After all three gifts are opened, the app transitions into a full-screen final surprise. This is the emotional peak of the experience.
+
+A bouquet of digital flowers blooms in the center of the screen. The petals grow, unfold, and glow softly. Hearts and flower petals float upward in slow motion. The background becomes dreamy and warm. Gentle music or a flourish plays.
+
+Text appears over the flowers:  
+“For you, Sara — these are your flowers 🌸”  
+Below it, in smaller text:  
+“Our first Valentine’s — Feb 14, 2026”
+
+This screen feels like a keepsake — something meaningful and beautiful she’ll want to save.
+
+She can tap buttons to:  
+• Save the bouquet as an image  
+• Share it with friends or keep it forever  
+
+This final screen should feel like a digital version of receiving real flowers — emotional, special, and unforgettable.
+
+Style & Mood  
+The whole app uses soft rose-pinks, creamy whites, pale gold accents, and floral textures. Headings feel handwritten and romantic. Body text is clean and easy to read. Everything moves slowly and gracefully — no sharp edges, no cold colors, no techy vibes. This should feel like love, not software.
+
+Tone of the App  
+The app should feel like a gift, not a product.  
+Like a private little world Brady made just for Sara.  
+Something she’ll open again just to feel loved.
+
+End of prompt.
