@@ -1,12 +1,12 @@
 "use client"
 
 import { useState } from "react"
-import { WelcomeScreen } from "@/components/valentine/welcome-screen"
-import { GiftSelectionScreen } from "@/components/valentine/gift-selection-screen"
-import { LoveNoteScreen } from "@/components/valentine/love-note-screen"
-import { GiftCardScreen } from "@/components/valentine/gift-card-screen"
-import { MusicVideoScreen } from "@/components/valentine/music-video-screen"
-import { FinalBouquetScreen } from "@/components/valentine/final-bouquet-screen"
+import { WelcomeScreen } from "../components/valentine/welcome-screen"
+import { GiftSelectionScreen } from "../components/valentine/gift-selection-screen"
+import { LoveNoteScreen } from "../components/valentine/love-note-screen"
+import { GiftCardScreen } from "../components/valentine/gift-card-screen"
+import { MusicVideoScreen } from "../components/valentine/music-video-screen"
+import { FinalBouquetScreen } from "../components/valentine/final-bouquet-screen"
 
 type Screen = "welcome" | "giftSelection" | "loveNote" | "giftCard" | "musicVideo" | "finalBouquet"
 
