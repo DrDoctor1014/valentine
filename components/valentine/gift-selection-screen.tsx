@@ -183,8 +183,17 @@ export function GiftSelectionScreen({ openedGifts, onOpenGift }: GiftSelectionSc
 
   return (
     <div className="relative min-h-screen flex flex-col items-center px-6 py-12 bg-gradient-to-b from-rose-100 via-pink-50 to-rose-50 overflow-hidden">
+      {/* Background gift boxes image */}
+      <div className="absolute inset-0 opacity-10 pointer-events-none">
+        <img 
+          src="/images/gift-boxes.jpg" 
+          alt=""
+          className="w-full h-full object-cover"
+        />
+      </div>
+      
       {/* Ambient background glow */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-rose-200/40 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-rose-200/60 rounded-full blur-3xl pointer-events-none" />
 
       {/* Floating Sparkles */}
       <FloatingSparkle delay={0} left="12%" top="20%" />

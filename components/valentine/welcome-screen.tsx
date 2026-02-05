@@ -116,14 +116,15 @@ export function WelcomeScreen({ onContinue }: WelcomeScreenProps) {
           )}
         >
           <div className="absolute inset-0 bg-rose-400/30 rounded-full blur-3xl scale-150 animate-pulse-glow" />
-          <div className="relative animate-heartbeat">
-            <Heart 
-              className="w-28 h-28 md:w-36 md:h-36 text-rose-400 drop-shadow-lg" 
-              fill="currentColor"
-              strokeWidth={0}
+          <div className="relative animate-heartbeat w-64 h-64 md:w-80 md:h-80">
+            <img 
+              src="/images/romantic-heart.jpg"
+              alt="Romantic heart"
+              className="w-full h-full object-contain drop-shadow-2xl"
             />
-            <Sparkles className="absolute top-0 right-0 w-6 h-6 text-amber-400 animate-sparkle" />
-            <Sparkles className="absolute bottom-2 left-0 w-5 h-5 text-amber-400 animate-sparkle" style={{ animationDelay: '0.5s' }} />
+            <Sparkles className="absolute top-4 right-4 w-8 h-8 text-amber-300 animate-sparkle" />
+            <Sparkles className="absolute bottom-8 left-4 w-6 h-6 text-amber-300 animate-sparkle" style={{ animationDelay: '0.5s' }} />
+            <Sparkles className="absolute top-12 left-8 w-5 h-5 text-rose-300 animate-sparkle" style={{ animationDelay: '0.8s' }} />
           </div>
         </div>
 

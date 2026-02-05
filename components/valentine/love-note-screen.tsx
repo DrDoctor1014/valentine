@@ -105,9 +105,18 @@ export function LoveNoteScreen({ onClose }: LoveNoteScreenProps) {
           mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
         )}
       >
-        <div className="h-full bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl shadow-rose-200/40 overflow-hidden flex flex-col border border-rose-100">
+        <div className="h-full bg-white/90 backdrop-blur-sm rounded-3xl shadow-xl shadow-rose-200/40 overflow-hidden flex flex-col border border-rose-100 relative">
+          {/* Background texture */}
+          <div className="absolute inset-0 opacity-5 pointer-events-none">
+            <img 
+              src="/images/love-letter-bg.jpg" 
+              alt=""
+              className="w-full h-full object-cover"
+            />
+          </div>
+          
           {/* Decorative Header */}
-          <div className="pt-6 px-6 flex justify-center">
+          <div className="pt-6 px-6 flex justify-center relative z-10">
             <div className="flex items-center gap-4">
               <div className="w-20 h-px bg-gradient-to-r from-transparent via-rose-300 to-transparent" />
               <div className="flex items-center gap-1">

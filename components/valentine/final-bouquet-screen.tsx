@@ -205,15 +205,23 @@ export function FinalBouquetScreen() {
         {/* Bouquet */}
         <div
           className={cn(
-            "flex-1 flex items-center justify-center max-h-[50vh] w-full max-w-xs transition-all duration-1000 delay-200",
+            "flex-1 flex items-center justify-center max-h-[60vh] w-full max-w-md transition-all duration-1000 delay-200",
             mounted ? "opacity-100 scale-100" : "opacity-0 scale-75"
           )}
         >
-          <div className="relative w-full">
+          <div className="relative w-full h-full flex items-center justify-center">
             {/* Glow behind bouquet */}
-            <div className="absolute inset-0 bg-rose-400/20 rounded-full blur-3xl scale-110 animate-pulse-glow" />
-            <div className="relative animate-float-gentle">
-              <RoseBouquet />
+            <div className="absolute inset-0 bg-rose-400/30 rounded-full blur-3xl scale-110 animate-pulse-glow" />
+            <div className="relative animate-float-gentle w-full h-full max-h-[500px]">
+              <img 
+                src="/images/rose-bouquet.jpg"
+                alt="Beautiful rose bouquet"
+                className="w-full h-full object-contain drop-shadow-2xl"
+              />
+              {/* Sparkles on the bouquet */}
+              <Sparkles className="absolute top-[15%] left-[20%] w-6 h-6 text-amber-300 animate-sparkle" />
+              <Sparkles className="absolute top-[25%] right-[25%] w-5 h-5 text-amber-300 animate-sparkle" style={{ animationDelay: '0.5s' }} />
+              <Sparkles className="absolute bottom-[40%] left-[15%] w-4 h-4 text-rose-300 animate-sparkle" style={{ animationDelay: '0.8s' }} />
             </div>
           </div>
         </div>
