@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { Heart, Sparkles, Share2 } from "lucide-react"
-import { cn } from "@/lib/utils"
+import { cn } from "../../lib/utils"
 
 interface RisingHeartProps {
   delay: number

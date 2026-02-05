@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useMemo } from "react"
 import { Heart, Sparkles, Gift } from "lucide-react"
-import { cn } from "@/lib/utils"
+import { cn } from "../../lib/utils"
 
 interface FloatingSparkleProps {
   delay: number

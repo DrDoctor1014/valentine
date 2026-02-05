@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { Heart, Sparkles, X, Eye, Copy, Check, ShoppingBag } from "lucide-react"
-import { cn } from "@/lib/utils"
+import { cn } from "../../lib/utils"
 
 const GIFT_CARD_CODE = "XXXX-XXXXXX-XXXX"
 

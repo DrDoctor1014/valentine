@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { Heart, X, Feather } from "lucide-react"
-import { cn } from "@/lib/utils"
+import { cn } from "../../lib/utils"
 
 const LOVE_NOTE_MESSAGE = `My Dearest Sara,
 

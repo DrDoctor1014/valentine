@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useRef } from "react"
 import { Heart, Music, X, Play, Pause, Volume2, VolumeX } from "lucide-react"
-import { cn } from "@/lib/utils"
+import { cn } from "../../lib/utils"
 
 // Replace with your actual romantic music video URL
 const VIDEO_URL = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
