@@ -1,0 +1,247 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 355 100% 97%;
+    --foreground: 16 25% 28%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 16 25% 28%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 16 25% 28%;
+
+    --primary: 350 100% 78%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 350 50% 92%;
+    --secondary-foreground: 16 25% 28%;
+
+    --muted: 350 30% 85%;
+    --muted-foreground: 350 15% 50%;
+
+    --accent: 43 100% 50%;
+    --accent-foreground: 16 25% 28%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 350 30% 85%;
+    --input: 350 30% 85%;
+    --ring: 350 100% 78%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 355 100% 97%;
+    --foreground: 16 25% 28%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 16 25% 28%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 16 25% 28%;
+
+    --primary: 350 100% 78%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 350 50% 92%;
+    --secondary-foreground: 16 25% 28%;
+
+    --muted: 350 30% 85%;
+    --muted-foreground: 350 15% 50%;
+
+    --accent: 43 100% 50%;
+    --accent-foreground: 16 25% 28%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 350 30% 85%;
+    --input: 350 30% 85%;
+    --ring: 350 100% 78%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  /* Float animation */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+      opacity: 0.6;
+    }
+    50% {
+      transform: translateY(-20px);
+      opacity: 0.9;
+    }
+  }
+
+  .animate-float {
+    animation: float 4s ease-in-out infinite;
+  }
+
+  /* Float gift animation */
+  @keyframes float-gift {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-6px);
+    }
+  }
+
+  .animate-float-gift {
+    animation: float-gift 3.6s ease-in-out infinite;
+  }
+
+  /* Float note animation */
+  @keyframes float-note {
+    0%, 100% {
+      transform: translateY(0) rotate(0deg);
+      opacity: 0.4;
+    }
+    50% {
+      transform: translateY(-12px) rotate(10deg);
+      opacity: 0.7;
+    }
+  }
+
+  .animate-float-note {
+    animation: float-note 5s ease-in-out infinite;
+  }
+
+  /* Sparkle animation */
+  @keyframes sparkle {
+    0%, 100% {
+      transform: scale(0.5);
+      opacity: 0;
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 1;
+    }
+  }
+
+  .animate-sparkle {
+    animation: sparkle 3s ease-in-out infinite;
+  }
+
+  /* Sparkle with rotation */
+  @keyframes sparkle-rotate {
+    0% {
+      transform: scale(0.5) rotate(0deg);
+      opacity: 0;
+    }
+    50% {
+      transform: scale(1.2) rotate(180deg);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(0.5) rotate(360deg);
+      opacity: 0;
+    }
+  }
+
+  .animate-sparkle-rotate {
+    animation: sparkle-rotate 8s linear infinite;
+  }
+
+  /* Pulse glow animation */
+  @keyframes pulse-glow {
+    0%, 100% {
+      opacity: 0.2;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.5;
+      transform: scale(1.1);
+    }
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2.4s ease-in-out infinite;
+  }
+
+  /* Confetti rise animation */
+  @keyframes confetti-rise {
+    0% {
+      transform: translateY(0) translateX(0) rotate(0deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-40vh) translateX(var(--x-drift, 50px)) rotate(var(--rotation, 180deg));
+      opacity: 0;
+    }
+  }
+
+  .animate-confetti-rise {
+    --x-drift: calc((var(--random, 0.5) - 0.5) * 100px);
+    --rotation: calc((var(--random, 0.5) - 0.5) * 360deg);
+    animation: confetti-rise 3s ease-out forwards;
+  }
+
+  /* Rising heart animation */
+  @keyframes rise {
+    0% {
+      transform: translateY(0) translateX(0) scale(0.8);
+      opacity: 0;
+    }
+    10% {
+      opacity: 0.7;
+    }
+    70% {
+      opacity: 0.7;
+    }
+    100% {
+      transform: translateY(-35vh) translateX(var(--x-drift, 20px)) scale(1.1);
+      opacity: 0;
+    }
+  }
+
+  .animate-rise {
+    --x-drift: calc((var(--random, 0.5) - 0.5) * 40px);
+    animation: rise 5s ease-out infinite;
+  }
+
+  /* Zoom in animation */
+  @keyframes zoom-in {
+    0% {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  .animate-zoom-in {
+    animation: zoom-in 0.4s ease-out forwards;
+  }
+
+  /* Fade in animation */
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.4s ease-out forwards;
+  }
+}
